@@ -23,6 +23,6 @@ spec:
       containers:
       - name: test
         image: mh17665/password:{{img}}.0
-        command: ["/bin/sh" "-c" "python ./test.py mounir"]
+        command: ["/bin/sh" "-c" "python ./test{{img}}.py mounir"]
       restartPolicy: Never
 {%- endfor %}
