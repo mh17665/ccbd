@@ -1,0 +1,27 @@
+{%- set params = [{ "name": "1", "password": "http://dbpedia.org/resource/Apple", },
+                  { "name": "2", "password": "http://dbpedia.org/resource/Banana", },
+                  { "name": "3", "password": "http://dbpedia.org/resource/Cherry" }]
+%}
+{%- for p in params %}
+{%- set name = p["name"] %}
+{%- set url = p["password"] %}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-{{ name }}
+  labels:
+    jobgroup: test
+spec:
+  template:
+    metadata:
+      name: test
+      labels:
+        jobgroup: test
+    spec:
+      containers:
+      - name: test
+        image: mh17665/password:random
+        command: ["python","test.py",{{ password }}]
+      restartPolicy: Never
+{%- endfor %}
