@@ -1,10 +1,10 @@
-{%- set params = [{ "name": "1", "password": "mounir", },
-                  { "name": "2", "password": "mounir", },
+{%- set params = [{ "name": "1", "password": "mounir" },
+                  { "name": "2", "password": "mounir" },
                   { "name": "3", "password": "mounir" }]
 %}
 {%- for p in params %}
 {%- set name = p["name"] %}
-{%- set url = p["password"] %}
+{%- set password = p["password"] %}
 ---
 apiVersion: batch/v1
 kind: Job
