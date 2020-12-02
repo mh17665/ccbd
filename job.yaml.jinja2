@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: test
-        image: mh17665/password:random
+        image: mh17665/password:arg
         command: ["python","test.py","{{ password }}"]
       restartPolicy: Never
 {%- endfor %}
