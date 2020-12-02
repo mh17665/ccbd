@@ -1,7 +1,7 @@
-{%- set params = [{ "name": "1", "img": "1.0" },
-                  { "name": "2", "img": "2.0" },
-                  { "name": "3", "img": "3.0" },
-                  { "name": "4", "img": "4.0" }]
+{%- set params = [{ "name": "1", "img": "1" },
+                  { "name": "2", "img": "2" },
+                  { "name": "3", "img": "3" },
+                  { "name": "4", "img": "4" }]
 %}
 {%- for p in params %}
 {%- set name = p["name"] %}
@@ -10,7 +10,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: test-{{ name }}
+  name: test-{{name}}
   labels:
     jobgroup: test
 spec:
@@ -22,6 +22,7 @@ spec:
     spec:
       containers:
       - name: test
-        image: mh17665/password:{{img}}
+        image: mh17665/password:{{img}}.0
+        command: ["python test{{img}}.py mounir"]
       restartPolicy: Never
 {%- endfor %}
