@@ -1,10 +1,11 @@
-{%- set params = [{ "name": "1", "password": "mounir" },
-                  { "name": "2", "password": "mounir" },
-                  { "name": "3", "password": "mounir" }]
+{%- set params = [{ "name": "1", "img": "1.0" },
+                  { "name": "2", "img": "2.0" },
+                  { "name": "3", "img": "3.0" },
+                  { "name": "3", "img": "4.0" }]
 %}
 {%- for p in params %}
 {%- set name = p["name"] %}
-{%- set password = p["password"] %}
+{%- set img = p["img"] %}
 ---
 apiVersion: batch/v1
 kind: Job
@@ -21,7 +22,6 @@ spec:
     spec:
       containers:
       - name: test
-        image: mh17665/password:arg
-        command: ["python test.py {{ password }}"]
+        image: mh17665/password:{{img}}
       restartPolicy: Never
 {%- endfor %}
