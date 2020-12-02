@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
       - name: test
-        image: mh17665/password:1.0
+        image: mh17665/password:random
         command: ["python","test.py"]
       restartPolicy: Never
