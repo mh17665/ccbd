@@ -24,6 +24,6 @@ spec:
       - name: test
         image: mh17665/password:{{img}}.0
         command: ["python test{{img}}.py"]
-        args:["mounir"]
+        args: ["mounir"]
       restartPolicy: Never
 {%- endfor %}
