@@ -1,13 +1,18 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: test
+  name: test-$ITEM
+  labels:
+    jobgroup: test
 spec:
   template:
+    metadata:
+      name: test
+      labels:
+        jobgroup: test
     spec:
       containers:
       - name: test
         image: mh17665/password:1.0
         command: ["python","test.py"]
       restartPolicy: Never
-  backoffLimit: 4
