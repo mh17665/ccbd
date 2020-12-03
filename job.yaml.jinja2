@@ -23,6 +23,6 @@ spec:
       containers:
       - name: test
         image: mh17665/password:{{img}}.0
-        command: ["/bin/sh","-c","python ./test{{img}}.py mou"]
+        command: ["/bin/sh","-c","python ./test{{img}}.py zed"]
       restartPolicy: Never
 {%- endfor %}
