@@ -1,28 +1,29 @@
-{%- set params = [{ "name": "1", "img": "1" },
-                  { "name": "2", "img": "2" },
-                  { "name": "3", "img": "3" },
-                  { "name": "4", "img": "4" }]
+{%- set params = [{ "name": "a-f", "img": "a-f", "py": "1" },
+                  { "name": "g-l", "img": "g-l", "py": "2" },
+                  { "name": "m-r", "img": "m-r", "py": "3" },
+                  { "name": "s-z", "img": "s-z", "py": "4" }]
 %}
 {%- for p in params %}
 {%- set name = p["name"] %}
 {%- set img = p["img"] %}
+{%- set py = p["py"] %}
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: test-{{name}}
+  name: password-{{name}}
   labels:
-    jobgroup: test
+    jobgroup: password
 spec:
   template:
     metadata:
-      name: test
+      name: password
       labels:
-        jobgroup: test
+        jobgroup: password
     spec:
       containers:
-      - name: test
-        image: mh17665/password:{{img}}.0
-        command: ["/bin/sh","-c","python ./test{{img}}.py abc"]
+      - name: password
+        image: mh17665/password:{{img}}
+        command: ["/bin/sh","-c","python ./test{{py}}.py abc"]
       restartPolicy: Never
 {%- endfor %}
